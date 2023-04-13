@@ -39,6 +39,13 @@ def to_grayscale(pil_image: np.ndarray) -> np.ndarray:
         array_modified=np.copy(pil_image)
         array_modified=apply_formulas(array_modified)
         output_rgb_to_grayscale=array_modified.reshape(1,height,width)
+
+        if np.issubdtype(pil_image.dtype,np.integer):
+            output_rgb_to_grayscale=np.round(output_rgb_to_grayscale*255)
+            output_rgb_to_grayscale=output_rgb_to_grayscale.astype(pil_image.dtype)
+        else:
+            output_rgb_to_grayscale = (output_rgb_to_grayscale * 255).astype(pil_image.dtype)
+
         return output_rgb_to_grayscale
 
     else:
