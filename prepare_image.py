@@ -14,7 +14,8 @@ def data_validation(image: np.ndarray,x:int,y:int,width:int,height:int,size:int)
 
 def change_pixels(i,j,f_pixelated_image,f_known_array,size_i,size_j):
     values = f_pixelated_image[i:i + size_i, j:j + size_j]
-    if len(values) != 0:
+    # if len(values) != 0:
+    if values.shape[0] != 0 and values.shape[1] != 0:
         mean = np.mean(values)
         f_pixelated_image[i:i + size_i, j:j + size_j] = mean
         f_known_array[i:i + size_i, j:j + size_j] = False
