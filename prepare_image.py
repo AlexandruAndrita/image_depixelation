@@ -60,4 +60,6 @@ def prepare_image(image: np.ndarray,
     known_array=known_array.reshape(1,original_height,original_width)
     target_array=target_array[y:y+height,x:x+width]
 
+    target_array=target_array.reshape(1,target_array.shape[0],target_array.shape[1])
+
     return pixelated_image,known_array,target_array
